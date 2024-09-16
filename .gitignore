@@ -1,0 +1,30 @@
+# Ignore Helm generated files
+helm-release.yaml
+helm-release.json
+
+# Ignore Kubernetes secrets or credentials (if accidentally included)
+secrets.yaml
+*.secrets.yaml
+*.secret.yaml
+
+# Ignore Chart lock file (if you don’t want to track dependencies lock file)
+Chart.lock
+
+# Ignore build-related files
+*.tgz   # Helm package files
+*.pack  # Any other packaging files
+
+# Ignore local chart testing directories (like `helm template` output)
+charts/
+output/
+templates/_helpers.tpl
+
+# Ignore any logs or temporary files
+*.log
+*.tmp
+*.swp
+*.bak
+
+# Ignore build directories or files
+.build/
+dist/
