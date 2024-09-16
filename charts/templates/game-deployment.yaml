@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sammlr-app
+  namespace: sammlr
+  labels:
+    app: sammlr-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sammlr-app
+  template:
+    metadata:
+      labels:
+        app: sammlr-app
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/config-map.yaml") . | sha256sum }}
+    spec:
+      containers:
+        - image: card-overview-orchestration:0.0.1
+          name: sammlr-app
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TEST_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                  name: spring-config
+                  key: TEST
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always

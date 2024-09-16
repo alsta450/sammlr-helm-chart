@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-config
+  namespace: sammlr
+data:
+  TEST: {{ .Values.test.config.value }}
