@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sammlr-svc
+  namespace: sammlr
+  labels:
+    app: sammlr-app
+spec:
+  selector:
+    app: sammlr-app
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080

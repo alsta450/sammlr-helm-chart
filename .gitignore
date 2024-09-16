@@ -15,7 +15,6 @@ Chart.lock
 *.pack  # Any other packaging files
 
 # Ignore local chart testing directories (like `helm template` output)
-charts/
 output/
 templates/_helpers.tpl
 
